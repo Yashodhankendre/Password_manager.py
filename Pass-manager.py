@@ -103,9 +103,8 @@ def update_password():
 def view_details():
     details = load_data()
     name_input = input('Enter your Name : ').capitalize()
-    email_input = input('Enter the email : ')
-    for user,info in details.items():
-        print(f'Name{name_input},\n Email:{info['Email']},\n password:{info['Password']}')
+    if name_input  in details:
+        print(details[name_input])
 
 def delete_details():
     pass
@@ -136,5 +135,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
