@@ -103,8 +103,15 @@ def update_password():
 def view_details():
     details = load_data()
     name_input = input('Enter your Name : ').capitalize()
-    if name_input  in details:
-        print(details[name_input])
+    if name_input not in details:
+        print(f'No records found for {name_input}')
+        return
+    df = pd.DataFrame(details).T
+    df.index.name = 'Name'
+    user_df = df.loc[[name_input]]
+
+    print(f"\nAccount details for {name_input}:\n")
+    print(user_df,'\n')
 
 def delete_details():
     pass
@@ -135,6 +142,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
