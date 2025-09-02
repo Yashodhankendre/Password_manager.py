@@ -50,7 +50,8 @@ def add_details():
     parts = email_input.split('@')
     if len(parts)!=2:
         print('enter the valid email ')
-
+        return
+        
     name_part = parts[0]
     domain_part = '@' + parts[1]
 
@@ -164,6 +165,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
