@@ -114,7 +114,29 @@ def view_details():
     print(user_df,'\n')
 
 def delete_details():
-    pass
+    details = load_data()
+    
+    if not details:
+        print("No data available.")
+        return
+    
+    name_input = input('Enter the name: ').capitalize()
+    email_input = input('Enter the email: ')
+    password_input = input('Enter the password: ')
+    
+    if name_input not in details:
+        print("Name not found.")
+        return
+    
+    # check email & password
+    if (details[name_input]["Email"] == email_input and
+        details[name_input]["Password"] == password_input):
+        
+        del details[name_input]
+        save_data(details)
+        print("Account deleted successfully ")
+    else:
+        print("Invalid email or password ")
 
 def main():
     print(f'\n WELCOME TO PASSWORD MANAGER \n')
@@ -142,6 +164,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 
 
 
